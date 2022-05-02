@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Cowin Vaccination alert Registration</h2>
+<p>Enter your emailid and area pin to get the notification alert in your email id..</p>
+
+<input type="text" placeholder="Enter your Area Pin" id="areapin"><br><br>
+<input type="text" placeholder="Enter your Email ID" id="emailid"><br><br>
+<button onclick="myFunction()">Register</button>
+
+<script>
+function myFunction() {
+
+var areapin = document.getElementById("areapin").value;
+var emailid = document.getElementById("emailid").value;
+alert(areapin);
+alert(emailid);
+var url = "https://enipe6lcil.execute-api.ap-south-1.amazonaws.com/dev?pin="+areapin+"&email="+emailid
+alert(url);
+location.href = "https://enipe6lcil.execute-api.ap-south-1.amazonaws.com/dev?pin="+areapin+"&email="+emailid;
+//location.replace("https://enipe6lcil.execute-api.ap-south-1.amazonaws.com/dev?pin="+areapin+"&email="+emailid)
+}
+</script>
+
+</body>
+</html> 

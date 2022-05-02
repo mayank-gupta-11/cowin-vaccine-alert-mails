@@ -1,0 +1,254 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": "REPLACE_ME_WITH_METHOD_ARN",
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": [
+                        "REPLACE_ME_WITH_YOUR_IP"
+                    ]
+                }
+            }
+        }
+    ]
+}
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": "arn:aws:execute-api:us-east-1:xxxxxxxxxx:u55zk0d2e8/*/GET/token",
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": [
+                        "xxx.xx.xxx.xx/xx",
+                    ]
+                }
+            }
+        }
+    ]
+}
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": [
+                "arn:aws:execute-api:ap-south-1:328864072647:8i7br2mmt7/*/POST/"
+            ]
+        },
+        {
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": [
+               "arn:aws:execute-api:ap-south-1:328864072647:8i7br2mmt7/*/POST/"
+            ],
+            "Condition" : {
+                "IpAddress": {
+                    "aws:SourceIp": ["192.0.2.0/24", "198.51.100.0/24" ]
+                }
+            }
+        }
+    ]
+}
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": "arn:aws:execute-api:ap-south-1:328864072647:pt5u9bxa5g/*/POST/"
+        },
+        {
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": "arn:aws:execute-api:ap-south-1:328864072647:pt5u9bxa5g/*/POST/",
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": [
+                        "142.64.12.44/32",
+                        "141.64.12.44/32"
+                    ]
+                }
+            }
+        }
+    ]
+}
+
+{
+   "Version": "2012-10-17",
+   "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": [
+                    "arn:aws:cloudfront::328864072647:distribution/E2OX4C9RNXCHTE"
+                ]
+            },
+            "Action": "execute-api:Invoke",
+            "Resource": [
+                "arn:aws:execute-api:ap-south-1:328864072647:pt5u9bxa5g/*/POST/"
+            ]
+        }
+    ]
+}
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": "arn:aws:execute-api:ap-south-1:328864072647:pt5u9bxa5g/*/POST/"
+        },
+        {
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": "arn:aws:execute-api:ap-south-1:328864072647:pt5u9bxa5g/*/POST/",
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": "192.64.12.44/32"
+                }
+            }
+        }
+    ]
+}
+
+########################################################3
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": "arn:aws:execute-api:ap-south-1:xxxxxxxxxxx:yyyyyyy/*/POST/",
+			"Condition": {
+			"NotIpAddress": {
+			  "aws:SourceIp": ["192.191.12.44/32"]
+			}
+		  }
+        }
+    ]
+}
+
+###########################################################
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": "arn:aws:execute-api:ap-south-1:328864072647:pt5u9bxa5g/*/POST/",
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": "192.191.5.4/32"
+                }
+            }
+        }
+    ]
+}
+
+############################################################ s3 rferrer
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": [
+                "arn:aws:execute-api:ap-south-1:328864072647:pt5u9bxa5g/*/POST/"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "aws:Referer": [
+                        "https://d1isozjijxpfgo.cloudfront.net/"
+                    ]
+                }
+            }
+        }
+    ]
+}
+
+#######################################################################
+
+final working
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": [
+                "arn:aws:execute-api:ap-south-1:328864072647:pt5u9bxa5g/*/POST/",
+                "arn:aws:execute-api:ap-south-1:328864072647:pt5u9bxa5g/*/OPTIONS/"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "aws:Referer": "https://d1isozjijxpfgo.cloudfront.net/"
+                }
+            }
+        }
+    ]
+}
+#######################################################################
+
+final working 
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": [
+                "arn:aws:execute-api:ap-south-1:328864072647:pt5u9bxa5g/*/POST/",
+                "arn:aws:execute-api:ap-south-1:328864072647:pt5u9bxa5g/*/OPTIONS/"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "aws:Referer": "https://d1isozjijxpfgo.cloudfront.net/"
+                }
+            }
+        },
+        {
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": [
+                "arn:aws:execute-api:ap-south-1:328864072647:pt5u9bxa5g/*/POST/",
+                "arn:aws:execute-api:ap-south-1:328864072647:pt5u9bxa5g/*/OPTIONS/"
+            ],
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": "192.149.172.127/32"
+                }
+            }
+        }
+    ]
+}

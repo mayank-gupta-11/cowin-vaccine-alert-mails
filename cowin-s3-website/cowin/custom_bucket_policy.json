@@ -1,0 +1,32 @@
+{
+    "Version": "2008-10-17",
+    "Id": "PolicyForPublicWebsiteContent",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::cowin-details/site/*"
+        }
+    ]
+}
+
+{
+  "Version":"2012-10-17",
+  "Id":"http referer policy example",
+  "Statement":[
+    {
+      "Sid":"Allow get requests originating from www.example.com and example.com.",
+      "Effect":"Allow",
+      "Principal":"*",
+      "Action":["s3:GetObject","s3:GetObjectVersion"],
+      "Resource":"arn:aws:s3:::cowin-details/site/*",
+      "Condition":{
+        "StringLike":{"aws:Referer":["8090358597"]}
+      }
+    }
+  ]
+}

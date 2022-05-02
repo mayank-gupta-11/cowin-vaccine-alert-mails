@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+<center>
+<h2>Covid-19 Vaccination alert Registration</h2>
+</center>
+<center>
+<p>Enter your Emailid and Area Pin to get the Notification alert whenever there is slot availability in your area...</p>
+</center>
+<br><br>
+<form onsubmit="return myFunction();">
+<center>
+<input type="text" placeholder="Enter your Area Pin" id="areapin" required /><br><br>
+<input type="text" placeholder="Enter your Email ID" id="emailid" required /><br><br>
+</center>
+<center>
+<input type="submit" value="Register">
+</center>
+</form>
+<center>
+<br><br>
+<h2>
+<p id="response"></p>
+</h2>
+</center>
+
+<script>
+
+function myFunction(){
+var areapin = document.getElementById("areapin").value;
+var emailid = document.getElementById("emailid").value;
+var data = JSON.stringify({"pin":areapin,"email":emailid});
+var res = document.getElementById('response');
+
+var xhr = new XMLHttpRequest();
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+	//alert(this.responseText);
+	var msg = this.responseText;
+	//alert(msg);
+	var obj = JSON.parse(msg);
+	res.innerHTML = obj.body;
+  }
+});
+// https://pkimtpogp0.execute-api.ap-south-1.amazonaws.com/html-res/
+xhr.open("POST", "https://pkimtpogp0.execute-api.ap-south-1.amazonaws.com/dev");
+xhr.setRequestHeader("Authorization", "testmyk");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+
+return false;
+}
+</script>
+
+</body>
+</html> 
