@@ -1,0 +1,41 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": [
+                "arn:aws:execute-api:ap-south-1:xxxxxxxxxxxx:pt5u9bxa5g/*/POST/",
+                "arn:aws:execute-api:ap-south-1:xxxxxxxxxxxx:pt5u9bxa5g/*/OPTIONS/"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "aws:Referer": "https://www.covid-19-vaccine-alert.in/"
+                }
+            }
+        },
+        {
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": [
+                "arn:aws:execute-api:ap-south-1:xxxxxxxxxxxx:pt5u9bxa5g/*/POST/",
+                "arn:aws:execute-api:ap-south-1:xxxxxxxxxxxx:pt5u9bxa5g/*/OPTIONS/"
+            ],
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": [
+                        "165.225.221.73/32",
+                        "192.149.172.17/32",
+                        "148.64.5.212/32",
+                        "148.64.5.23/32",
+                        "148.64.7.206/32",
+                        "47.15.8.247/32",
+                        "148.64.12.44/32"
+                    ]
+                }
+            }
+        }
+    ]
+}
